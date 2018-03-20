@@ -6,4 +6,5 @@
 
 1. 本项目需要在https下地图方能访问
 2. clone项目到本地，通过https服务打开index.html
+    - 直接访问 https://rhymeyang.github.io/NeighborhoodMap/ 也可查看
 3. 可以根据列表框选择相应地点，地图会移动到目标地点

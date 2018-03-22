@@ -6,22 +6,9 @@ var app = app || {};
 
 (function($){
     app.map = app.map || {};
-
     app.map.currentCity="当前城市更新中";
 
-    app.map.locations = [
-        {id: 0, title: '人民广场', location: {lat: 31.229670, lng: 121.476200}, address: "上海市黄浦区人民大道120号"},
-        {id: 1, title: '杜莎夫人蜡像馆', location: {lat: 31.234590, lng: 121.473410}, address: " 上海市黄浦区南京西路68号新世界城10层"},
-        {id: 2, title: '环球金融中心', location: {lat: 31.234870, lng: 121.507400}, address: "上海市浦东新区世纪大道100号"},
-        {id: 3, title: '外滩观光隧道', location: {lat: 31.239800, lng: 121.490410}, address: "上海市黄浦区中山东一路外滩"},
-        {id: 4, title: '马勒别墅', location: {lat: 31.223030, lng: 121.456260}, address: "上海市静安区陕西南路30号"},
-        {id: 5, title: '朱家角', location: {lat: 31.112570, lng: 121.050530}, address: "上海市青浦区朱家角"},
-        {id: 6, title: '泰晤士小镇', location: {lat: 31.0293500, lng: 121.197840}, address: "上海市松江区三新北路900弄"},
-        {id: 7, title: '海湾国家森林公园', location: {lat: 30.860830, lng: 121.686410}, address: "上海市奉贤区随塘河路1677号"},
-         {id: 8, title: '迪士尼乐园', location: {lat: 31.144190, lng: 121.660340}, address: "上海市浦东新区川沙新镇赵行村"},
-         {id: 2, title: '野生动物园', location: {lat: 31.055220, lng: 121.722160}, address: "中国上海市上海市浦东新区南六公路178号"}
-
-      ];
+    getJson();
 
     // fix on Shanghai
     app.map.init = function mapInit(){
@@ -77,7 +64,7 @@ var app = app || {};
             let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -20) });
             // infoWindow.on('close', this.onInfoWindowClose.bind(this));
 
-            let markArray = app.map.locations.map(function(item){
+            let markArray = app.ViewModel.locations().map(function(item){
                     let itemMark =  new SimpleMarker({
                         iconLabel: String.fromCharCode('A'.charCodeAt(0) + item.id),
                         // iconStyle: 'img/mark_b.png',
@@ -118,9 +105,26 @@ var app = app || {};
                     infoWindow.setContent(`<p>An error occured, infomation:</p><p>${msg.statusText}</p>`);
                 });
                 infoWindow.open(mapObj, e.target.getPosition());
-    }
+        }
 
         });
+    }
+
+    function getJson(){
+        let url = './data/location.json';
+        fetch(url)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log("get init locations success");
+            app.ViewModel.locations(data);
+            // app.map.locations = data;
+        })
+        .catch(function(err){
+            console.log(err);
+            // app.map.locations = [];
+        })
     }
 
     function searchFromWikipedia(key_word){
@@ -130,7 +134,6 @@ var app = app || {};
 
 
     function searchFromBaike(key) {
-        // let url = `https://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=9886122&bk_key=${key}&bk_length=600`;
         let baikeUrl = `https://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=${key}&bk_length=600`;
         baikeUrl=encodeURI(baikeUrl);
 

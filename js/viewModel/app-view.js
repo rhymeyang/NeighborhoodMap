@@ -3,10 +3,10 @@ var app = app || {};
 // currentCity: ko.observable(app.map.currentCity),
 (function($){
     app.ViewModel = {
-    currentCity: ko.observable(app.map.currentCity),
+    currentCity: ko.observable(),
     // areaFilter : ko.observable("选择感兴趣的地点"),
     selectedLocation: ko.observable(),
-    locations: ko.observableArray(app.map.locations),
+    locations: ko.observableArray(),
     markArray: ko.observableArray(),
     selectChanged: function(data){
         app.ViewModel.selectLocation(app.ViewModel.selectedLocation());

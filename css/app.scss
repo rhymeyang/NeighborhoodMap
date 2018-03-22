@@ -104,7 +104,42 @@ Galaxy S5: 360 X 640;
         }
       color: $title-color;
     }
+    div.location-filter{
+        input.filter-input{
+            color: $blue6;
+            @media(max-width: 768px) {
+                padding: 2px;
+                margin-left: 5px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+            @media(min-width: 768px) {
+                padding: 5px;
+                margin: 5px 2px 5px 5px;
+                border-radius: 10px;
+            }
+        }
+        input.filter-clear{
+            background-color: $blue6;
+            background-color: $blue6;
+            border-color: $blue6;
+            color:$title-color;
+
+            @media(max-width: 768px) {
+                padding: 2px;
+                margin-left: 5px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+            @media(min-width: 768px) {
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+        }
+    }
     div.select-location  {
+        display: none;
         select {
                 color:#245e78;
               }
@@ -134,6 +169,7 @@ Galaxy S5: 360 X 640;
                 padding-left: 0;
                 color:white;
                 li {
+                    cursor: pointer;
                     margin-top: 15px;
                     div.title {
                         margin-top: 10px;

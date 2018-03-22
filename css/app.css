@@ -78,20 +78,50 @@ Galaxy S5: 360 X 640;
       .page-sidebar div.current-city {
         font-size: 3em;
         margin-bottom: 20px; } }
-  .page-sidebar div.select-location select {
-    color: #245e78; }
-  @media (max-width: 768px) {
-    .page-sidebar div.select-location {
-      margin-left: 5px;
-      padding-bottom: 5px;
-      height: 50%; }
-      .page-sidebar div.select-location select {
-        margin-top: 5px; } }
-  @media (min-width: 768px) {
-    .page-sidebar div.select-location {
-      margin: 10px; }
-      .page-sidebar div.select-location select {
-        margin: 10px; } }
+  .page-sidebar div.location-filter input.filter-input {
+    color: #395e68; }
+    @media (max-width: 768px) {
+      .page-sidebar div.location-filter input.filter-input {
+        padding: 2px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px; } }
+    @media (min-width: 768px) {
+      .page-sidebar div.location-filter input.filter-input {
+        padding: 5px;
+        margin: 5px 2px 5px 5px;
+        border-radius: 10px; } }
+  .page-sidebar div.location-filter input.filter-clear {
+    background-color: #395e68;
+    background-color: #395e68;
+    border-color: #395e68;
+    color: #eeeeee; }
+    @media (max-width: 768px) {
+      .page-sidebar div.location-filter input.filter-clear {
+        padding: 2px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px; } }
+    @media (min-width: 768px) {
+      .page-sidebar div.location-filter input.filter-clear {
+        padding: 5px;
+        border-radius: 10px; } }
+  .page-sidebar div.select-location {
+    display: none; }
+    .page-sidebar div.select-location select {
+      color: #245e78; }
+    @media (max-width: 768px) {
+      .page-sidebar div.select-location {
+        margin-left: 5px;
+        padding-bottom: 5px;
+        height: 50%; }
+        .page-sidebar div.select-location select {
+          margin-top: 5px; } }
+    @media (min-width: 768px) {
+      .page-sidebar div.select-location {
+        margin: 10px; }
+        .page-sidebar div.select-location select {
+          margin: 10px; } }
   @media (max-width: 768px) {
     .page-sidebar div.location-list-wrap {
       display: none; } }
@@ -101,6 +131,7 @@ Galaxy S5: 360 X 640;
       padding-left: 0;
       color: white; }
       .page-sidebar div.location-list-wrap .location-list li {
+        cursor: pointer;
         margin-top: 15px; }
         .page-sidebar div.location-list-wrap .location-list li div.title {
           margin-top: 10px;

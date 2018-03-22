@@ -16,6 +16,15 @@
                 <div class="current-city">
                     <label  data-bind="text: currentCity"></label>
                 </div>
+                <div class='location-filter'>
+                    <input class="filter-input"
+                        type="text"
+                        class="form-control"
+                        data-bind="value:areaFilter,
+                                valueUpdate: 'afterkeydown'"
+                         placeholder="请输入地址名或关键字"/>
+                    <input class="filter-clear" type="button" data-bind="click: cleanFilter" value="清除"></input>
+                </div>
                 <div class="select-location">
                     <select  data-bind="options: locations,
                         optionsText: 'title',
@@ -24,7 +33,7 @@
                         event: {change: selectChanged}"></select>
                 </div>
                 <div class="location-list-wrap">
-                    <ul  class="location-list" data-bind="foreach: locations">
+                    <ul  class="location-list" data-bind="foreach: filterLocations">
                         <li data-bind="attr: {id: id}, click: $parent.selectLocation">
                             <div class="title" data-bind="text: title"></div>
                             <div class="position" data-bind="text: address"></div>

@@ -21,7 +21,7 @@
                         optionsText: 'title',
                         value: selectedLocation,
                         optionsCaption: '选择感兴趣的地点',
-                    click: selectChanged"></select>
+                        event: {change: selectChanged}"></select>
                 </div>
                 <div class="location-list-wrap">
                     <ul  class="location-list" data-bind="foreach: locations">
